@@ -1,24 +1,37 @@
-<label>Recipe Name:</label>
-<input ng-model="recipe.name">
+    <div class="col-sm-4 col-sm-offset-4">
+    <div class="form-group">
+        <label>Recipe Name:</label>
+        <input class="form-control" ng-model="recipe.name">
+    </div>
 
-<br>
-<label>Recipe Directions:</label>
-<textarea ng-model="recipe.directions"></textarea>
+    <div class="form-group">
+        <label>Recipe Directions:</label>
+        <textarea class="form-control" ng-model="recipe.directions"></textarea>
+    </div>
 
-<br>
-<label>Recipe Description:</label>
-<textarea ng-model="recipe.description"></textarea>
+    <div class="form-group">
+        <label>Recipe Description:</label>
+        <textarea class="form-control" ng-model="recipe.description"></textarea>
+    </div>
 
-<br>
-<label>Ingredient</label>
-<input ng-model="ingredientName">
-<button ng-click="addIngredientToRecipe(ingredientName)">Add Ingredient to Recipe</button>
 
-<br>
+    <div class="form-group">
+        <label>Ingredient</label>
+        <input class="form-control" ng-model="ingredientName">
+    </div>
 
-<ol>
-    <li ng-repeat="ingredient in recipe.ingredients">{{ ingredient.name }}</li>
-</ol>
+    <button ng-click="addIngredientToRecipe(ingredientName)"
+            class="btn btn-md btn-info glyphicon glyphicon-cutlery center-block"> Add Ingredient </button>
 
-<br>
-<button ng-click="addRecipe()">Save Recipe</button>
+    <br>
+
+    <ol>
+        <li ng-repeat="ingredient in recipe.ingredients">{{ ingredient.name }}
+            <i ng-click="removeIngredientFromRecipe(ingredient)"
+               class="btn btn-xs btn-danger glyphicon glyphicon-remove center-block"></i>
+        </li>
+    </ol>
+
+    <button ng-click="addRecipe()"
+            class="btn btn-md btn-success glyphicon glyphicon-floppy-disk center-block"> Save Recipe</button>
+</div>

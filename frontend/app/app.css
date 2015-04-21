@@ -3,7 +3,7 @@
 .menu {
   list-style: none;
   border-bottom: 0.1em solid black;
-  margin-bottom: 2em;
+  margin-bottom: 0em;
   padding: 0 0 0.5em;
 }
 
@@ -27,4 +27,11 @@
 .menu > li:nth-child(1):before {
   content: "";
   padding: 0;
+}
+.site-background {
+    background-image: url("images/food.png");
+}
+
+.site-foreground {
+    background-color: #FFE1A1;
 }
