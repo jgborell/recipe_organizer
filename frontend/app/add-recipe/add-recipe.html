@@ -1,4 +1,4 @@
-    <div class="col-sm-4 col-sm-offset-4">
+<div class="col-md-4 col-sm-6">
     <div class="form-group">
         <label>Recipe Name:</label>
         <input class="form-control" ng-model="recipe.name">
@@ -14,24 +14,36 @@
         <textarea class="form-control" ng-model="recipe.description"></textarea>
     </div>
 
-
     <div class="form-group">
         <label>Ingredient</label>
         <input class="form-control" ng-model="ingredientName">
     </div>
 
     <button ng-click="addIngredientToRecipe(ingredientName)"
-            class="btn btn-md btn-info glyphicon glyphicon-cutlery center-block"> Add Ingredient </button>
+            class="btn btn-xs btn-info glyphicon glyphicon-plus"> Add Ingredient to Recipe</button>
 
-    <br>
 
     <ol>
         <li ng-repeat="ingredient in recipe.ingredients">{{ ingredient.name }}
             <i ng-click="removeIngredientFromRecipe(ingredient)"
-               class="btn btn-xs btn-danger glyphicon glyphicon-remove center-block"></i>
+               class="btn btn-xs btn-danger glyphicon glyphicon-remove"></i>
         </li>
     </ol>
 
+    <div class="form-group">
+        <input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg"
+               onchange="angular.element(this).scope().addPhoto()"/>
+    </div>
+
     <button ng-click="addRecipe()"
-            class="btn btn-md btn-success glyphicon glyphicon-floppy-disk center-block"> Save Recipe</button>
+            class="btn btn-md btn-success glyphicon glyphicon-floppy-disk"> Save Recipe</button>
+</div>
+
+<div class="col-sm-6 col-md-4 col-md-offset-2">
+    <div class="recipe-card">
+        <h3><a href="#/recipes/{{ recipe.id }}">{{ recipe.name }}</a></h3>
+        <img class="img-responsive recipe-card-image"
+             ng-src="{{ recipe.photo }}">
+        <p class="recipe-card-description">{{ recipe.description }}</p>
+    </div>
 </div>

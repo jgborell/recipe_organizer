@@ -14,14 +14,23 @@ angular.module('myApp.addRecipe', ['ngRoute'])
         $scope.recipe = {
             ingredients: []
         };
-        $scope.addIngredientToRecipe = function(ingredientName) {
+        $scope.addPhoto = function () {
+            var file = document.getElementById('file').files[0],
+                reader = new FileReader();
+            reader.onload = function (e) {
+                $scope.recipe.photo = 'data:image/png;base64,' + btoa(e.target.result);
+                $scope.$apply();
+            };
+            reader.readAsBinaryString(file);
+        };
+        $scope.addIngredientToRecipe = function (ingredientName) {
             if (ingredientName != null) {
                 var ingredient = {name: ingredientName};
                 $scope.recipe.ingredients.push(ingredient);
                 $scope.ingredientName = null;
             }
         };
-        $scope.removeIngredientFromRecipe = function(ingredient) {
+        $scope.removeIngredientFromRecipe = function (ingredient) {
             var index = $scope.recipe.ingredients.indexOf(ingredient);
             if (index != -1) {
                 $scope.recipe.ingredients.splice(index, 1);
@@ -31,6 +40,9 @@ angular.module('myApp.addRecipe', ['ngRoute'])
             Restangular.all('add-recipe').customPOST($scope.recipe).then(function () {
                 toastr.success("Recipe was successfully created!");
                 $scope.recipe = {};
+                $scope.recipe.photo = null;
+                document.getElementById('file').value = null;
+                $scope.$apply();
             }, function () {
                 toastr.error("There was a problem adding your recipe");
             });

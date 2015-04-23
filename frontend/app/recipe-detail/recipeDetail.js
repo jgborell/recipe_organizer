@@ -9,7 +9,7 @@ angular.module('myApp.recipeDetail', ['ngRoute'])
         });
     }])
 
-    .controller('RecipeDetailCtrl', ['$scope', '$routeParams', '$location', 'Restangular', function ($scope, $routeParams, $location, Restangular) {
+    .controller('RecipeDetailCtrl', ['$scope', '$http', '$routeParams', '$location', 'Restangular', function ($scope, $http, $routeParams, $location, Restangular) {
         $scope.recipeId = $routeParams.recipeId;
 
         $scope.editing = false;
@@ -45,13 +45,33 @@ angular.module('myApp.recipeDetail', ['ngRoute'])
             }
         };
 
+        $scope.addPhoto = function () {
+            var file = document.getElementById('file').files[0],
+                reader = new FileReader();
+            reader.onload = function (e) {
+                $scope.recipe.photo = 'data:image/png;base64,' + btoa(e.target.result);
+                $scope.$apply();
+            };
+            reader.readAsBinaryString(file);
+        };
+
         $scope.saveEditedRecipe = function () {
-          $scope.recipe.photo = null;
-          Restangular.one('recipes', $scope.recipeId).customPUT($scope.recipe).then(function () {
-              alert("Your recipe was successfully edited!");
-              $scope.editing = false;
-          }, function() {
-              alert("Something went wrong updating the recipe...  ¯\_(ツ)_/¯")
-          });
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                $scope.recipe.photo = 'data:image/png;base64,' + btoa(e.target.result);
+                Restangular.one('recipes/', $scope.recipeId).customPUT($scope.recipe).then(function (recipe) {
+                    $scope.editing = false;
+                    toastr.success("Your recipe was successfully saved!");
+                }, function (error) {
+                    alert("Something went wrong saving your recipe...");
+                });
+
+            };
+            $http.get($scope.recipe.photo + '/', {responseType: 'arraybuffer'}).then(function(e){
+
+       console.log(e);
+                var file = new Blob([e.data]);
+                reader.readAsBinaryString(file);
+            });
         };
     }]);

@@ -35,3 +35,25 @@
 .site-foreground {
     background-color: #FFE1A1;
 }
+
+.recipe-card {
+    background-color: #ffffcc;
+    border-radius: 3px;
+    padding: inherit;
+    padding-top: 1px;
+    margin-top: 30px;
+    height: 300px;
+}
+
+.recipe-card-image {
+    width: 100%;
+    height: 65%;
+}
+
+.recipe-card-desription {
+    margin-top: 15px;
+}
+
+.navbar-color {
+    background-color: #FFF3AE;
+}

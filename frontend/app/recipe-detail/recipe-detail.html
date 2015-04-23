@@ -1,7 +1,12 @@
 <h1 ng-hide="editing">{{ recipe.name }}</h1>
 <input ng-show="editing" ng-model="recipe.name">
 
-<img ng-src="{{ recipe.photo }}" width="300" class=""img-responsive">
+<img ng-src="{{ recipe.photo }}" width="300" class="img-responsive">
+
+<div class="form-group" ng-show="editing">
+    <input type="file" id="file" name="file" accept="image/gif, image/x-png, image/jpeg, image/jpg"
+           onchange="angular.element(this).scope().addPhoto()"/>
+</div>
 
 <br>
 <p ng-hide="editing">{{ recipe.description }}</p>
