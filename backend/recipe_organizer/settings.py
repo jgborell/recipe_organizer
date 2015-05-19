@@ -39,6 +39,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'apps.recipes',
     'rest_framework',
+    'rest_framework.authtoken',
     'corsheaders',
 )
 
@@ -71,6 +72,14 @@ TEMPLATES = [
         },
     },
 ]
+
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework.authentication.TokenAuthentication',
+    )
+}
+
 
 WSGI_APPLICATION = 'recipe_organizer.wsgi.application'
 

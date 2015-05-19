@@ -1,6 +1,10 @@
+from django.http import HttpResponse
 from rest_framework import generics
-from serializers import RecipeSerializer
+from rest_framework.authentication import TokenAuthentication
+from rest_framework.permissions import IsAuthenticated
+from serializers import *
 from models import Recipe
+import json
 
 class RecipeList(generics.ListAPIView):
     serializer_class = RecipeSerializer
@@ -12,3 +16,12 @@ class RecipeDetail(generics.RetrieveUpdateDestroyAPIView):
 
 class AddRecipe(generics.CreateAPIView):
     serializer_class = RecipeSerializer
+
+
+class GetUserInfo(generics.RetrieveAPIView):
+    authentication_classes = (TokenAuthentication,)
+    permission_classes = (IsAuthenticated,)
+
+    def retrieve(self, request, *args, **kwargs):
+        user = UserSerializer(request.user)
+        return HttpResponse(json.dumps(user.data))
