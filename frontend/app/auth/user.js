@@ -62,7 +62,7 @@ angular.module('myApp.User', [])
         };
 
         return user
-    })
+    });
 
 
 
