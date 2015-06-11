@@ -28,20 +28,22 @@
   content: "";
   padding: 0;
 }
-.site-background {
+body {
     background-image: url("images/food.png");
 }
 
 .site-foreground {
     background-color: #FFE1A1;
+    border-radius: 12px;
 }
 
 .recipe-card {
     background-color: #ffffcc;
-    border-radius: 3px;
-    padding: inherit;
+    border-radius: 12px;
+    padding-bottom: inherit;
     padding-top: 1px;
     margin-top: 30px;
+    margin-bottom: 30px;
     height: 300px;
 }
 
@@ -55,5 +57,23 @@
 }
 
 .navbar-color {
-    background-color: #FFF3AE;
+    background-color: #fffcb0;
+}
+
+.login {
+    width: 300px;
+    border: 1px solid;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10%;
+}
+
+.registration {
+    width: 300px;
+    border: 1px solid;
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5%;
 }

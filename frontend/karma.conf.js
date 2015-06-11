@@ -8,7 +8,12 @@ module.exports = function(config){
       'app/bower_components/angular-route/angular-route.js',
       'app/bower_components/angular-mocks/angular-mocks.js',
       'app/components/**/*.js',
-      'app/view*/**/*.js'
+      'app/bower_components/restangular/dist/restangular.min.js',
+      'app/bower_components/lodash/lodash.min.js',
+      'app/app.js',
+      'app/view*/**/*.js',
+      'app/recipes/*.js',
+
     ],
 
     autoWatch : true,

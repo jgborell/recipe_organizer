@@ -9,10 +9,10 @@ angular.module('myApp.addRecipe', ['ngRoute'])
         });
     }])
 
-    .controller('AddRecipeCtrl', ['$scope', 'Restangular', function ($scope, Restangular) {
+    .controller('AddRecipeCtrl', ['$scope', 'Restangular', 'user', function ($scope, Restangular, user) {
 
         $scope.recipe = {
-            ingredients: []
+            ingredients: [],
         };
         $scope.addPhoto = function () {
             var file = document.getElementById('file').files[0],
@@ -25,8 +25,11 @@ angular.module('myApp.addRecipe', ['ngRoute'])
         };
         $scope.addIngredientToRecipe = function (ingredientName) {
             if (ingredientName != null) {
-                var ingredient = {name: ingredientName};
-                $scope.recipe.ingredients.push(ingredient);
+                var ingredientList = ingredientName.split(',');
+                for (var i in ingredientList) {
+                    var ingredient = {name: ingredientList[i]};
+                    $scope.recipe.ingredients.push(ingredient);
+                }
                 $scope.ingredientName = null;
             }
         };
@@ -37,6 +40,7 @@ angular.module('myApp.addRecipe', ['ngRoute'])
             }
         };
         $scope.addRecipe = function () {
+            $scope.recipe.owner = user.info.id;
             Restangular.all('add-recipe').customPOST($scope.recipe).then(function () {
                 toastr.success("Recipe was successfully created!");
                 $scope.recipe = {};

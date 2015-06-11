@@ -1,0 +1,3 @@
+Recipe Organizer is a project our Coding Course uses to instruct the students on how to develope a full stack project.
+This project introduces us to Django backend and AngularJS frontend development. It Instructs how to use and implement git and our git hub accounts.
+With Recipe-Organizer we were able to deploy our application to our online server , and debug any issues which surfaced when our projects were deployed.
