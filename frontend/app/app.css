@@ -63,18 +63,19 @@ body {
 }
 
 .login {
-    width: 300px;
+    width: 55%;
     border: 1px solid;
+    border-radius: 12px;
     padding: 20px;
     margin-left: auto;
     margin-right: auto;
-    margin-top: 10%;
-    margin-bottom: 10%;
+    margin-bottom: 5%;
 }
 
 .registration {
     width: 300px;
     border: 1px solid;
+    border-radius: 12px;
     padding: 20px;
     margin-left: auto;
     margin-right: auto;
