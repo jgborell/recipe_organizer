@@ -35,6 +35,8 @@ body {
 .site-foreground {
     background-color: #FFE1A1;
     border-radius: 12px;
+    margin-bottom: 5%;
+    margin-top: 5%;
 }
 
 .recipe-card {
@@ -67,6 +69,7 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 10%;
+    margin-bottom: 10%;
 }
 
 .registration {
@@ -76,4 +79,8 @@ body {
     margin-left: auto;
     margin-right: auto;
     margin-top: 5%;
+    margin-bottom: 5%;
+}
+a:hover {
+    text-decoration: none;
 }
