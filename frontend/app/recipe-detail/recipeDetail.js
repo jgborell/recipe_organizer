@@ -30,10 +30,13 @@ angular.module('myApp.recipeDetail', ['ngRoute'])
             }
         };
 
-        $scope.addIngredientToRecipe = function(ingredientName) {
+        $scope.addIngredientToRecipe = function (ingredientName) {
             if (ingredientName != null) {
-                var ingredient = {name: ingredientName};
-                $scope.recipe.ingredients.push(ingredient);
+                var ingredientList = ingredientName.split(',');
+                for (var i in ingredientList) {
+                    var ingredient = {name: ingredientList[i]};
+                    $scope.recipe.ingredients.push(ingredient);
+                }
                 $scope.ingredientName = null;
             }
         };
